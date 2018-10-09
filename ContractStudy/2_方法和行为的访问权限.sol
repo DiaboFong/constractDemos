@@ -4,7 +4,7 @@ contract Person {
 /*
 1.合约中的方法默认为Public类型，可以被外部直接访问
 */
-    function age() constant returns (uint){
+    function age() public constant returns (uint){
         return 55;
     }
     function weight() public constant returns (uint){

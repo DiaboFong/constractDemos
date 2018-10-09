@@ -50,11 +50,7 @@ contract Person{
             selfdestruct(_owner);
         }
         
-
-
     }
-
-
 
 }
 
