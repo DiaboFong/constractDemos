@@ -19395,7 +19395,7 @@ window.__contracts__ = {
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-09T11:24:36.649Z"
+  "updatedAt": "2018-10-09T12:23:16.147Z"
 },
   "undefined": {
   "contractName": "Migrations",
@@ -20777,12 +20777,12 @@ window.__contracts__ = {
     "4447": {
       "events": {},
       "links": {},
-      "address": "0x8f0483125fcb9aaaefa9209d8e9d7b9c8b9fb90f",
-      "transactionHash": "0xc2f4c57a6809c5f42364ec41cc5939c5ea0ab4dcc01d6c317a61e50995069b43"
+      "address": "0x8cdaf0cd259887258bc13a92c0a6da92698644c0",
+      "transactionHash": "0x473f16df4fe2427ccb0b4aa0c7a70f96a282e95d3e38e7f2fc1f395f1a68693b"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-09T11:24:42.384Z"
+  "updatedAt": "2018-10-09T12:23:19.009Z"
 },
   "undefined": {
   "contractName": "Register",
@@ -25101,12 +25101,12 @@ window.__contracts__ = {
     "4447": {
       "events": {},
       "links": {},
-      "address": "0x2c2b9c9a4a25e24b174f26114e8926a9f2128fe4",
-      "transactionHash": "0xd4bfe5a7c0908d7580614beea623325c0ec26bda3c9e9d9e118b783649e99df5"
+      "address": "0x345ca3e014aaf5dca488057592ee47305d9b3e10",
+      "transactionHash": "0x342b43c5f93274f29e31046b1119933f3047c150e1bf43c38b3d770d3f6f5e45"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-09T11:24:42.389Z"
+  "updatedAt": "2018-10-09T12:23:19.015Z"
 }
 };
 
@@ -25152,3 +25152,37 @@ window.addEventListener('load', function() {
 
  
 
+/*
+前端逻辑
+1.生成微博账号
+2.在平台中注册微博昵称
+3.发送微博
+4.展示微博内容
+5.展示打赏金额
+*/
+
+//填写部署好weiboRegister的合约地址
+var weiboRegistryAddress  = "0x345ca3e014aaf5dca488057592ee47305d9b3e10"
+var currentWeiboAddress ;
+
+//部署WeiboAccount合约，需要的gas设置
+var defaultGas = 5000000;
+
+//注册微博账号
+function register() {
+    var weiboRegistryInstance;
+    var name = $("#weiboName").val();
+    var accountAddress;
+    var weiboAccountAddress;
+    Account.new({from: web3.eth.accounts[0], gas: defaultGas}).then(function(instance){
+        weiboAccountAddress = instance.address;
+        currentWeiboAddress = weiboAccountAddress;
+        $("#weiboAddress").val(weiboAccountAddress);
+    }).then(function() {
+        Register.at(weiboRegistryAddress).then(function (instance) {
+            Register
+        })
+    })
+    
+
+}
